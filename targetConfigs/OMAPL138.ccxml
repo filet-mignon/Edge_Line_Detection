@@ -14,7 +14,7 @@
                     <router HW_revision="" XML_version="1.2" description="" id="device_0" isa="ICEPICK_C">
                         <subpath id="device_1">
                             <cpu HW_revision="" XML_version="1.2" desc="C674X_0" description="" deviceSim="false" id="device_2" isa="TMS320C674X">
-                                <property Type="filepathfield" Value="..\..\..\..\..\MyProjects\L138_support\OMAP-L138_LCDK.gel" id="GEL File"/>
+                                <property Type="filepathfield" Value="..\..\..\MyProjects\L138_support\OMAP-L138_LCDK.gel" id="GEL File"/>
                             </cpu>
                         </subpath>
                     </router>
