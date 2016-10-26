@@ -8,7 +8,6 @@ CG_TOOL_ROOT := C:/ti/ccsv5/tools/compiler/c6000_7.4.4
 
 ORDERED_OBJS += \
 $(GEN_CMDS__FLAG) \
-"./miniproj1_good.obj" \
 "./miniproj1.obj" \
 "./L138_LCDK_aic3106_init.obj" \
 "../linker_dsp.cmd" \
@@ -125,8 +124,8 @@ Lab\ 4.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(C6000_EXECUTABLE_OUTPUTS__QUOTED) "Lab 4.out"
-	-$(RM) "L138_LCDK_aic3106_init.pp" "miniproj1.pp" "miniproj1_good.pp" 
-	-$(RM) "L138_LCDK_aic3106_init.obj" "miniproj1.obj" "miniproj1_good.obj" 
+	-$(RM) "L138_LCDK_aic3106_init.pp" "miniproj1.pp" 
+	-$(RM) "L138_LCDK_aic3106_init.obj" "miniproj1.obj" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

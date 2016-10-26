@@ -1,7 +1,7 @@
 ******************************************************************************
                TMS320C6x Linker PC v7.4.4                      
 ******************************************************************************
->> Linked Wed Oct 26 16:07:18 2016
+>> Linked Wed Oct 26 16:24:47 2016
 
 OUTPUT FILE NAME:   <Lab 4.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 11818020
@@ -11,7 +11,7 @@ MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  dsp_l2_ram            11800000   00040000  00019d42  000262be  RWIX
+  dsp_l2_ram            11800000   00040000  00019d2a  000262d6  RWIX
   shared_ram            80000000   00020000  00000000  00020000  RWIX
   external_ram          c0000000   08000000  00e00000  07200000  RWIX
 
@@ -146,47 +146,47 @@ section   page    origin      length       input sections
                   1181954c    00000004     --HOLE--
                   11819550    00000008                 : trgdrv.obj (.far)
 
-.const     0    11819558    00000476     
-                  11819558    000002ac     miniproj1.obj (.const:.string)
-                  11819804    00000002     rts6740.lib : fputs.obj (.const:.string)
-                  11819806    00000002     --HOLE-- [fill = 0]
-                  11819808    00000101                 : ctype.obj (.const:.string:__ctypes_)
-                  11819909    00000064                 : perror.obj (.const:.string)
-                  1181996d    00000003     --HOLE-- [fill = 0]
-                  11819970    00000028     miniproj1.obj (.const:.string:_$P$T1$2)
-                  11819998    00000023     rts6740.lib : _printfi.obj (.const:.string)
-                  118199bb    00000005     --HOLE-- [fill = 0]
-                  118199c0    0000000e     miniproj1.obj (.const:.string:_$P$T0$1)
+.const     0    11819558    0000045e     
+                  11819558    00000294     miniproj1.obj (.const:.string)
+                  118197ec    00000002     rts6740.lib : fputs.obj (.const:.string)
+                  118197ee    00000002     --HOLE-- [fill = 0]
+                  118197f0    00000101                 : ctype.obj (.const:.string:__ctypes_)
+                  118198f1    00000064                 : perror.obj (.const:.string)
+                  11819955    00000003     --HOLE-- [fill = 0]
+                  11819958    00000028     miniproj1.obj (.const:.string:_$P$T1$2)
+                  11819980    00000023     rts6740.lib : _printfi.obj (.const:.string)
+                  118199a3    00000005     --HOLE-- [fill = 0]
+                  118199a8    0000000e     miniproj1.obj (.const:.string:_$P$T0$1)
 
-.cinit     0    118199d0    00000224     
-                  118199d0    0000005c     rts6740.lib : defs.obj (.cinit)
-                  11819a2c    00000004     --HOLE-- [fill = 0]
-                  11819a30    0000005c                 : lowlev.obj (.cinit)
-                  11819a8c    00000004     --HOLE-- [fill = 0]
-                  11819a90    00000048                 : cos.obj (.cinit)
-                  11819ad8    00000048                 : sin.obj (.cinit)
-                  11819b20    0000002c     miniproj1.obj (.cinit)
-                  11819b4c    00000004     --HOLE-- [fill = 0]
-                  11819b50    0000002c     rts6740.lib : exit.obj (.cinit)
-                  11819b7c    00000004     --HOLE-- [fill = 0]
-                  11819b80    0000002c                 : memory.obj (.cinit)
-                  11819bac    00000004     --HOLE-- [fill = 0]
-                  11819bb0    0000001c                 : _lock.obj (.cinit)
-                  11819bcc    00000004     --HOLE-- [fill = 0]
-                  11819bd0    0000000c                 : errno.obj (.cinit)
-                  11819bdc    00000004     --HOLE-- [fill = 0]
-                  11819be0    0000000c                 : fopen.obj (.cinit)
-                  11819bec    00000004     --HOLE-- [fill = 0]
-                  11819bf0    00000004     (.pad.cinit) [fill = 0]
+.cinit     0    118199b8    00000224     
+                  118199b8    0000005c     rts6740.lib : defs.obj (.cinit)
+                  11819a14    00000004     --HOLE-- [fill = 0]
+                  11819a18    0000005c                 : lowlev.obj (.cinit)
+                  11819a74    00000004     --HOLE-- [fill = 0]
+                  11819a78    00000048                 : cos.obj (.cinit)
+                  11819ac0    00000048                 : sin.obj (.cinit)
+                  11819b08    0000002c     miniproj1.obj (.cinit)
+                  11819b34    00000004     --HOLE-- [fill = 0]
+                  11819b38    0000002c     rts6740.lib : exit.obj (.cinit)
+                  11819b64    00000004     --HOLE-- [fill = 0]
+                  11819b68    0000002c                 : memory.obj (.cinit)
+                  11819b94    00000004     --HOLE-- [fill = 0]
+                  11819b98    0000001c                 : _lock.obj (.cinit)
+                  11819bb4    00000004     --HOLE-- [fill = 0]
+                  11819bb8    0000000c                 : errno.obj (.cinit)
+                  11819bc4    00000004     --HOLE-- [fill = 0]
+                  11819bc8    0000000c                 : fopen.obj (.cinit)
+                  11819bd4    00000004     --HOLE-- [fill = 0]
+                  11819bd8    00000004     (.pad.cinit) [fill = 0]
 
-.cio       0    11819bf8    00000120     UNINITIALIZED
-                  11819bf8    00000120     rts6740.lib : trgmsg.obj (.cio)
+.cio       0    11819be0    00000120     UNINITIALIZED
+                  11819be0    00000120     rts6740.lib : trgmsg.obj (.cio)
 
-.bss       0    11819d18    00000018     UNINITIALIZED
-                  11819d18    00000018     miniproj1.obj (.bss)
+.bss       0    11819d00    00000018     UNINITIALIZED
+                  11819d00    00000018     miniproj1.obj (.bss)
 
-.switch    0    11819d30    00000018     
-                  11819d30    00000018     rts6740.lib : perror.obj (.switch:_perror)
+.switch    0    11819d18    00000018     
+                  11819d18    00000018     rts6740.lib : perror.obj (.switch:_perror)
 
 .EXT_RAM   0    c0000000    00e00000     UNINITIALIZED
                   c0000000    00e00000     miniproj1.obj (.EXT_RAM)
@@ -196,8 +196,8 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 
 address    name
 --------   ----
-11819d18   $bss
-11819d18   .bss
+11819d00   $bss
+11819d00   .bss
 11800000   .data
 11810000   .text
 11818660   C$$EXIT
@@ -211,7 +211,7 @@ address    name
 11816dc0   _HOSTwrite
 11819358   _Header
 11819366   _InfoHeader
-11819bf8   __CIOBUF_
+11819be0   __CIOBUF_
 11818ea0   __STACK_END
 00000800   __STACK_SIZE
 00010000   __SYSMEM_SIZE
@@ -222,12 +222,12 @@ ffffffff   ___TI_pprof_out_hndl
 ffffffff   ___TI_prof_data_size
 ffffffff   ___TI_prof_data_start
 ffffffff   ___binit__
-11819d18   ___bss__
+11819d00   ___bss__
 ffffffff   ___c_args__
-118199d0   ___cinit__
+118199b8   ___cinit__
 11800000   ___data__
 11800000   ___edata__
-11819d30   ___end__
+11819d18   ___end__
 118186a0   ___etext__
 11818440   ___isinf
 ffffffff   ___pinit__
@@ -241,7 +241,7 @@ ffffffff   ___pinit__
 11817520   __cleanup
 11819530   __cleanup_ptr
 11815e60   __closefile
-11819808   __ctypes_
+118197f0   __ctypes_
 11811020   __divd
 118167e0   __divi
 118175c0   __divli
@@ -274,7 +274,7 @@ ffffffff   ___pinit__
 11816500   __wrt_ok
 11818660   _abort
 118168c0   _atoi
-11819d28   _bitmap
+11819d10   _bitmap
 11818020   _c_int00
 118169a0   _close
 11817980   _copy_in
@@ -299,13 +299,13 @@ c0000000   _m_mem
 11810658   _m_stat
 11810cc8   _main
 118157c0   _malloc
-11819d18   _mem_count
+11819d00   _mem_count
 11810000   _mem_init
 11818320   _memccpy
 11817b60   _memcpy
 11816a80   _memset
 11817ca0   _modf
-11819d2c   _num_pixels
+11819d14   _num_pixels
 11815940   _open
 118162e0   _perror
 118191c8   _pointers
@@ -320,17 +320,17 @@ c0c00000   _s_mem
 11814f20   _setvbuf
 11813f60   _sin
 118100c8   _sort
-11819d24   _sp
+11819d0c   _sp
 11816600   _sqrt
 11818120   _unlink
-11819d1c   _upper_bound_m
-11819d20   _upper_bound_s
+11819d04   _upper_bound_m
+11819d08   _upper_bound_s
 11817e80   _write
 118183e0   _writemsg
 ffffffff   binit
-118199d0   cinit
+118199b8   cinit
 11800000   edata
-11819d30   end
+11819d18   end
 118186a0   etext
 ffffffff   pinit
 
@@ -451,21 +451,21 @@ address    name
 11819538   ___TI_enable_exit_profile_output
 1181953c   __lock
 11819540   __unlock
-11819808   __ctypes_
-118199d0   ___cinit__
-118199d0   cinit
-11819bf8   __CIOBUF_
-11819d18   $bss
-11819d18   .bss
-11819d18   ___bss__
-11819d18   _mem_count
-11819d1c   _upper_bound_m
-11819d20   _upper_bound_s
-11819d24   _sp
-11819d28   _bitmap
-11819d2c   _num_pixels
-11819d30   ___end__
-11819d30   end
+118197f0   __ctypes_
+118199b8   ___cinit__
+118199b8   cinit
+11819be0   __CIOBUF_
+11819d00   $bss
+11819d00   .bss
+11819d00   ___bss__
+11819d00   _mem_count
+11819d04   _upper_bound_m
+11819d08   _upper_bound_s
+11819d0c   _sp
+11819d10   _bitmap
+11819d14   _num_pixels
+11819d18   ___end__
+11819d18   end
 c0000000   _m_mem
 c0c00000   _s_mem
 ffffffff   ___TI_pprof_out_hndl

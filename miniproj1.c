@@ -3,8 +3,10 @@
 #include <math.h>
 
 #define PI 3.1415926535
-#define INC 6
-#define R_INC 4
+#define INC 15
+#define R_INC 2
+
+#define SOLID 1
 
 unsigned char *bitmap;
 int num_pixels;
@@ -12,7 +14,8 @@ int num_pixels;
 
 int main(void)
 {
-	bitmap = imread("C:\\Users\\EE113D\\Desktop\\image1.bmp");
+//	bitmap = imread("C:\\Users\\EE113D\\Desktop\\image1.bmp");
+	bitmap = imread("G:\\test2.bmp");
 
 	num_pixels = InfoHeader.Width*InfoHeader.Height;
 
@@ -27,6 +30,8 @@ int main(void)
 	{
 		hough[i] = 0;
 	}
+
+
 
 
 	for(i = 0; i < num_pixels; i++){
