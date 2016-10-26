@@ -8,26 +8,32 @@ CMD_SRCS += \
 
 C_SRCS += \
 ../L138_LCDK_aic3106_init.c \
-../miniproj1.c 
+../miniproj1.c \
+../miniproj1_good.c 
 
 OBJS += \
 ./L138_LCDK_aic3106_init.obj \
-./miniproj1.obj 
+./miniproj1.obj \
+./miniproj1_good.obj 
 
 C_DEPS += \
 ./L138_LCDK_aic3106_init.pp \
-./miniproj1.pp 
+./miniproj1.pp \
+./miniproj1_good.pp 
 
 C_DEPS__QUOTED += \
 "L138_LCDK_aic3106_init.pp" \
-"miniproj1.pp" 
+"miniproj1.pp" \
+"miniproj1_good.pp" 
 
 OBJS__QUOTED += \
 "L138_LCDK_aic3106_init.obj" \
-"miniproj1.obj" 
+"miniproj1.obj" \
+"miniproj1_good.obj" 
 
 C_SRCS__QUOTED += \
 "../L138_LCDK_aic3106_init.c" \
-"../miniproj1.c" 
+"../miniproj1.c" \
+"../miniproj1_good.c" 
 
 

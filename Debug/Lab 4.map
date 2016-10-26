@@ -1,7 +1,7 @@
 ******************************************************************************
                TMS320C6x Linker PC v7.4.4                      
 ******************************************************************************
->> Linked Wed Oct 26 15:49:46 2016
+>> Linked Wed Oct 26 16:00:00 2016
 
 OUTPUT FILE NAME:   <Lab 4.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 11818020
@@ -28,7 +28,7 @@ section   page    origin      length       input sections
                   11800008    0000fff8     --HOLE--
 
 .text      0    11810000    000086a0     
-                  11810000    00001020     miniproj1.obj (.text)
+                  11810000    00001020     miniproj1_good.obj (.text)
                   11811020    000005a0     rts6740.lib : divd.obj (.text:__divd)
                   118115c0    00000580                 : _printfi.obj (.text:__getarg_diouxp)
                   11811b40    000004c0                 : fwrite.obj (.text:_fwrite)
@@ -134,7 +134,7 @@ section   page    origin      length       input sections
 .far       0    11818ea0    000006b8     UNINITIALIZED
                   11818ea0    00000324     rts6740.lib : defs.obj (.far)
                   118191c4    00000004                 : errno.obj (.far)
-                  118191c8    000001c6     miniproj1.obj (.far)
+                  118191c8    000001c6     miniproj1_good.obj (.far)
                   1181938e    00000002     --HOLE--
                   11819390    0000011c     rts6740.lib : lowlev.obj (.far)
                   118194ac    00000004                 : fopen.obj (.far)
@@ -147,16 +147,16 @@ section   page    origin      length       input sections
                   11819550    00000008                 : trgdrv.obj (.far)
 
 .const     0    11819558    00000476     
-                  11819558    000002ac     miniproj1.obj (.const:.string)
+                  11819558    000002ac     miniproj1_good.obj (.const:.string)
                   11819804    00000002     rts6740.lib : fputs.obj (.const:.string)
                   11819806    00000002     --HOLE-- [fill = 0]
                   11819808    00000101                 : ctype.obj (.const:.string:__ctypes_)
                   11819909    00000064                 : perror.obj (.const:.string)
                   1181996d    00000003     --HOLE-- [fill = 0]
-                  11819970    00000028     miniproj1.obj (.const:.string:_$P$T1$2)
+                  11819970    00000028     miniproj1_good.obj (.const:.string:_$P$T1$2)
                   11819998    00000023     rts6740.lib : _printfi.obj (.const:.string)
                   118199bb    00000005     --HOLE-- [fill = 0]
-                  118199c0    0000000e     miniproj1.obj (.const:.string:_$P$T0$1)
+                  118199c0    0000000e     miniproj1_good.obj (.const:.string:_$P$T0$1)
 
 .cinit     0    118199d0    00000224     
                   118199d0    0000005c     rts6740.lib : defs.obj (.cinit)
@@ -165,7 +165,7 @@ section   page    origin      length       input sections
                   11819a8c    00000004     --HOLE-- [fill = 0]
                   11819a90    00000048                 : cos.obj (.cinit)
                   11819ad8    00000048                 : sin.obj (.cinit)
-                  11819b20    0000002c     miniproj1.obj (.cinit)
+                  11819b20    0000002c     miniproj1_good.obj (.cinit)
                   11819b4c    00000004     --HOLE-- [fill = 0]
                   11819b50    0000002c     rts6740.lib : exit.obj (.cinit)
                   11819b7c    00000004     --HOLE-- [fill = 0]
@@ -183,13 +183,13 @@ section   page    origin      length       input sections
                   11819bf8    00000120     rts6740.lib : trgmsg.obj (.cio)
 
 .bss       0    11819d18    00000018     UNINITIALIZED
-                  11819d18    00000018     miniproj1.obj (.bss)
+                  11819d18    00000018     miniproj1_good.obj (.bss)
 
 .switch    0    11819d30    00000018     
                   11819d30    00000018     rts6740.lib : perror.obj (.switch:_perror)
 
 .EXT_RAM   0    c0000000    00e00000     UNINITIALIZED
-                  c0000000    00e00000     miniproj1.obj (.EXT_RAM)
+                  c0000000    00e00000     miniproj1_good.obj (.EXT_RAM)
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 

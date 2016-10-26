@@ -1,1 +1,1 @@
-"./miniproj1.obj" "./L138_LCDK_aic3106_init.obj" "../linker_dsp.cmd" -l"C:\Users\EE113D\MyProjects\OMAP-L138_GEL_BSL_Files\bsl\lib\evmomapl138_bsl.lib" -l"rts6740.lib" 
+"./miniproj1_good.obj" "./miniproj1.obj" "./L138_LCDK_aic3106_init.obj" "../linker_dsp.cmd" -l"C:\Users\EE113D\MyProjects\OMAP-L138_GEL_BSL_Files\bsl\lib\evmomapl138_bsl.lib" -l"rts6740.lib" 
