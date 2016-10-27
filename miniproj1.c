@@ -25,6 +25,15 @@ int main(void)
 	int result_x, result_y;
 
 	int RANGE = sqrt(InfoHeader.Width*InfoHeader.Width + InfoHeader.Height*InfoHeader.Height)/R_INC;
+	int WIDTH, HEIGHT;
+	if(SOBEL == 0){
+		WIDTH = InfoHeader.Width;
+		HEIGHT = InfoHeader.Height;
+	}
+	else{
+		WIDTH = InfoHeader.Width-2;
+		HEIGHT = InfoHeader.Height-2;
+	}
 
 	int* hough = (int*)m_malloc(sizeof(int) *2* RANGE * 180/INC);
 
@@ -33,13 +42,17 @@ int main(void)
 		hough[i] = 0;
 	}
 
-	int sobel_x[3][3] = { {-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1} };
-	int sobel_y[3][3] = { {-1, -2, -1}, {0, 0, 0}, {1, 2, 1} };
+	int sobel_x[3][3] = {	{-1, 0, 1}, 
+							{-2, 0, 2},
+							{-1, 0, 1} };
+	int sobel_y[3][3] = { 	{-1, -2, -1},
+							{0, 0, 0}, 
+							{1, 2, 1} };
+
+	int* sobel_temp = (int*)m_malloc(sizeof(int)*(WIDTH)*(HEIGHT));
+	int* sobel = (int*)m_malloc(sizeof(int)*(WIDTH-2)*(HEIGHT-2));
 
 	if(SOBEL==1){
-		int* sobel_temp = (int*)m_malloc(sizeof(int)*(InfoHeader.Width-2)*(InfoHeader.Height-2));
-		int* sobel = (int*)m_malloc(sizeof(int)*(InfoHeader.Width-4)*(InfoHeader.Height-4));
-
 		for(i = 1; i < (InfoHeader.Height-1); i++){
 			for(j = 1; j < (InfoHeader.Width-1); j++){
 				result_x = (bitmap[3*((i-1)*InfoHeader.Width + (j-1))]*sobel_x[2][0] +
@@ -51,48 +64,44 @@ int main(void)
 							bitmap[3*((i+1)*InfoHeader.Width + (j-1))]*sobel_x[0][0] +
 							bitmap[3*((i+1)*InfoHeader.Width + (j))]*sobel_x[0][1] +
 							bitmap[3*((i+1)*InfoHeader.Width + (j+1))]*sobel_x[0][2]);
-				sobel_temp[(i-1)*(InfoHeader.Width-2)+(j-1)] = result_x;
+				sobel_temp[(i-1)*(WIDTH)+(j-1)] = result_x;
 			}
 		}
 		for(i = 2; i < (InfoHeader.Height-2); i++){
 			for(j = 2; j < (InfoHeader.Width-2); j++){
-				result_y = (sobel[((i-1)*InfoHeader.Width + (j-1))]*sobel_y[2][0] +
-							sobel[((i-1)*InfoHeader.Width + (j))]*sobel_y[2][1] +
-							sobel[((i-1)*InfoHeader.Width + (j+1))]*sobel_y[2][2] +
-							sobel[((i)*InfoHeader.Width + (j-1))]*sobel_y[1][0] +
-							sobel[((i)*InfoHeader.Width + (j))]*sobel_y[1][1] +
-							sobel[((i)*InfoHeader.Width + (j+1))]*sobel_y[1][2] +
-							sobel[((i+1)*InfoHeader.Width + (j-1))]*sobel_y[0][0] +
-							sobel[((i+1)*InfoHeader.Width + (j))]*sobel_y[0][1] +
-							sobel[((i+1)*InfoHeader.Width + (j+1))]*sobel_y[0][2]);
-				sobel[(i)*(InfoHeader.Width-4)+(j)] = result_y;
+				result_y = (sobel_temp[((i-1)*WIDTH + (j-1))]*sobel_y[2][0] +
+							sobel_temp[((i-1)*WIDTH + (j))]*sobel_y[2][1] +
+							sobel_temp[((i-1)*WIDTH + (j+1))]*sobel_y[2][2] +
+							sobel_temp[((i)*WIDTH + (j-1))]*sobel_y[1][0] +
+							sobel_temp[((i)*WIDTH + (j))]*sobel_y[1][1] +
+							sobel_temp[((i)*WIDTH + (j+1))]*sobel_y[1][2] +
+							sobel_temp[((i+1)*WIDTH + (j-1))]*sobel_y[0][0] +
+							sobel_temp[((i+1)*WIDTH + (j))]*sobel_y[0][1] +
+							sobel_temp[((i+1)*WIDTH + (j+1))]*sobel_y[0][2]);
+				sobel[(i)*(WIDTH-2)+(j)] = result_y;
 			}
 		}
 	}
 
+	//Takes the magnitude of x and y
+	int* sobel = (int*)m_malloc(sizeof(int)*(InfoHeader.Width-2)*(InfoHeader.Height-2));
+	int a, b;
 	if(SOBEL==2){
-		int* sobel = (int*)m_malloc(sizeof(int)*(InfoHeader.Width-2)*(InfoHeader.Height-2));
 		for(i = 1; i < (InfoHeader.Height-1); i++){
 			for(j = 1; j < (InfoHeader.Width-1); j++){
-				result_x = (bitmap[3*((i-1)*InfoHeader.Width + (j-1))]*sobel_x[2][0] +
-							bitmap[3*((i-1)*InfoHeader.Width + (j))]*sobel_x[2][1] +
-							bitmap[3*((i-1)*InfoHeader.Width + (j+1))]*sobel_x[2][2] +
-							bitmap[3*((i)*InfoHeader.Width + (j-1))]*sobel_x[1][0] +
-							bitmap[3*((i)*InfoHeader.Width + (j))]*sobel_x[1][1] +
-							bitmap[3*((i)*InfoHeader.Width + (j+1))]*sobel_x[1][2] +
-							bitmap[3*((i+1)*InfoHeader.Width + (j-1))]*sobel_x[0][0] +
-							bitmap[3*((i+1)*InfoHeader.Width + (j))]*sobel_x[0][1] +
-							bitmap[3*((i+1)*InfoHeader.Width + (j+1))]*sobel_x[0][2]);
-				result_y = (bitmap[3*((i-1)*InfoHeader.Width + (j-1))]*sobel_y[2][0] +
-							bitmap[3*((i-1)*InfoHeader.Width + (j))]*sobel_y[2][1] +
-							bitmap[3*((i-1)*InfoHeader.Width + (j+1))]*sobel_y[2][2] +
-							bitmap[3*((i)*InfoHeader.Width + (j-1))]*sobel_y[1][0] +
-							bitmap[3*((i)*InfoHeader.Width + (j))]*sobel_y[1][1] +
-							bitmap[3*((i)*InfoHeader.Width + (j+1))]*sobel_y[1][2] +
-							bitmap[3*((i+1)*InfoHeader.Width + (j-1))]*sobel_y[0][0] +
-							bitmap[3*((i+1)*InfoHeader.Width + (j))]*sobel_y[0][1] +
-							bitmap[3*((i+1)*InfoHeader.Width + (j+1))]*sobel_y[0][2]);
-				sobel[(i-1)*(InfoHeader.Width-2)+(j-1)] = sqrt(result_x*result_x + result_y*result_y);
+				result_x = 0;
+				result_y = 0;
+				for(a = 0; a < 3; a++){
+					for(b = 0; b < 3; b++){
+						int xn = j + a - 1;
+						int yn = i + b - 1;
+						int index = xn + yn*InfoHeader.Width;
+
+						result_x += bitmap[3*index] * sobel_x[a][b];
+						result_y += bitmap[3*index] * sobel_y[a][b];
+					}
+				}
+				sobel[(i-1)*(WIDTH) + (j-1)] = sqrt(result_x*result_x + result_y*result_y);		
 			}
 		}
 	}
@@ -129,5 +138,7 @@ int main(void)
 
 
 	m_free(hough);
+	m_free(sobel);
+	m_free(sobel_temp);
 	return 0;
 }
