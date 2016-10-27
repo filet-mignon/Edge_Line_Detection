@@ -6,11 +6,12 @@
 #define INC 15
 #define R_INC 2
 
-#define SOLID 1
+#define SOBEL 1
 
 unsigned char *bitmap;
 int num_pixels;
 
+//0 is straight up, 180 is straight down
 
 int main(void)
 {
@@ -21,6 +22,7 @@ int main(void)
 
 	int i, j, k, x, y, r;
 	double radius;
+	int result_x, result_y;
 
 	int RANGE = sqrt(InfoHeader.Width*InfoHeader.Width + InfoHeader.Height*InfoHeader.Height)/R_INC;
 
@@ -31,12 +33,72 @@ int main(void)
 		hough[i] = 0;
 	}
 
+	int sobel_x[3][3] = { {-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1} };
+	int sobel_y[3][3] = { {-1, -2, -1}, {0, 0, 0}, {1, 2, 1} };
 
+	if(SOBEL==1){
+		int* sobel = (int*)m_malloc(sizeof(int)*(InfoHeader.Width-2)*(InfoHeader.Height-2));
+		for(i = 1; i < (InfoHeader.Height-1); i++){
+			for(j = 1; j < (InfoHeader.Width-1); j++){
+				result_x = (bitmap[3*((i-1)*InfoHeader.Width + (j-1))]*sobel_x[2][0] +
+							bitmap[3*((i-1)*InfoHeader.Width + (j))]*sobel_x[2][1] +
+							bitmap[3*((i-1)*InfoHeader.Width + (j+1))]*sobel_x[2][2] +
+							bitmap[3*((i)*InfoHeader.Width + (j-1))]*sobel_x[1][0] +
+							bitmap[3*((i)*InfoHeader.Width + (j))]*sobel_x[1][1] +
+							bitmap[3*((i)*InfoHeader.Width + (j+1))]*sobel_x[1][2] +
+							bitmap[3*((i+1)*InfoHeader.Width + (j-1))]*sobel_x[0][0] +
+							bitmap[3*((i+1)*InfoHeader.Width + (j))]*sobel_x[0][1] +
+							bitmap[3*((i+1)*InfoHeader.Width + (j+1))]*sobel_x[0][2]);
+				sobel[(i-1)*(InfoHeader.Width-2)+(j-1)] = result_x;
+			}
+		}
+		for(i = 2; i < (InfoHeader.Height-2); i++){
+			for(j = 2; j < (InfoHeader.Width-2); j++){
+				result_y = (sobel[((i-1)*InfoHeader.Width + (j-1))]*sobel_y[2][0] +
+							sobel[((i-1)*InfoHeader.Width + (j))]*sobel_y[2][1] +
+							sobel[((i-1)*InfoHeader.Width + (j+1))]*sobel_y[2][2] +
+							sobel[((i)*InfoHeader.Width + (j-1))]*sobel_y[1][0] +
+							sobel[((i)*InfoHeader.Width + (j))]*sobel_y[1][1] +
+							sobel[((i)*InfoHeader.Width + (j+1))]*sobel_y[1][2] +
+							sobel[((i+1)*InfoHeader.Width + (j-1))]*sobel_y[0][0] +
+							sobel[((i+1)*InfoHeader.Width + (j))]*sobel_y[0][1] +
+							sobel[((i+1)*InfoHeader.Width + (j+1))]*sobel_y[0][2]);
+				sobel[(i)*(InfoHeader.Width-2)+(j)] = result_y;
+			}
+		}
+	}
+
+	if(SOBEL==2){
+		int* sobel = (int*)m_malloc(sizeof(int)*(InfoHeader.Width-2)*(InfoHeader.Height-2));
+		for(i = 1; i < (InfoHeader.Height-1); i++){
+			for(j = 1; j < (InfoHeader.Width-1); j++){
+				result_x = (bitmap[3*((i-1)*InfoHeader.Width + (j-1))]*sobel_x[2][0] +
+							bitmap[3*((i-1)*InfoHeader.Width + (j))]*sobel_x[2][1] +
+							bitmap[3*((i-1)*InfoHeader.Width + (j+1))]*sobel_x[2][2] +
+							bitmap[3*((i)*InfoHeader.Width + (j-1))]*sobel_x[1][0] +
+							bitmap[3*((i)*InfoHeader.Width + (j))]*sobel_x[1][1] +
+							bitmap[3*((i)*InfoHeader.Width + (j+1))]*sobel_x[1][2] +
+							bitmap[3*((i+1)*InfoHeader.Width + (j-1))]*sobel_x[0][0] +
+							bitmap[3*((i+1)*InfoHeader.Width + (j))]*sobel_x[0][1] +
+							bitmap[3*((i+1)*InfoHeader.Width + (j+1))]*sobel_x[0][2]);
+				result_y = (bitmap[3*((i-1)*InfoHeader.Width + (j-1))]*sobel_y[2][0] +
+							bitmap[3*((i-1)*InfoHeader.Width + (j))]*sobel_y[2][1] +
+							bitmap[3*((i-1)*InfoHeader.Width + (j+1))]*sobel_y[2][2] +
+							bitmap[3*((i)*InfoHeader.Width + (j-1))]*sobel_y[1][0] +
+							bitmap[3*((i)*InfoHeader.Width + (j))]*sobel_y[1][1] +
+							bitmap[3*((i)*InfoHeader.Width + (j+1))]*sobel_y[1][2] +
+							bitmap[3*((i+1)*InfoHeader.Width + (j-1))]*sobel_y[0][0] +
+							bitmap[3*((i+1)*InfoHeader.Width + (j))]*sobel_y[0][1] +
+							bitmap[3*((i+1)*InfoHeader.Width + (j+1))]*sobel_y[0][2]);
+				sobel[(i-1)*(InfoHeader.Width-2)+(j-1)] = sqrt(result_x*result_x + result_y*result_y);
+			}
+		}
+	}
 
 
 	for(i = 0; i < num_pixels; i++){
 		//Check if black
-		if(bitmap[i*3] <= 5){
+		if(bitmap[i*3] <= 0){
 			//Calculate ze hough transform
 			y = i/InfoHeader.Width;
 			x = i%InfoHeader.Width;
